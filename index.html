@@ -47,6 +47,8 @@
 
 	</div>
 
+<script src='main.js'></script>
+
 <script type="text/javascript" charset="utf-8">
 
 function init_graph_obj(id){
@@ -100,36 +102,22 @@ window.addEventListener('message', function(e){
 
 	//Show hover tag for second graph if first activated
 	if(graph.id==='theta' && message.type==='hover') {
-		graphs['theta2'].graphContentWindow.postMessage({
-			'task': 'hover',
-			'selection': {xval: message.points[0].x, yval: message.points[0].y}
-		}, 'https://plot.ly');
+		coordinate_hover(graphs['theta2'],message);
 	}
 
 	//Show hover tag for first graph if second activated
 	if(graph.id==='theta2' && message.type==='hover') {
-		graphs['theta'].graphContentWindow.postMessage({
-			'task': 'hover',
-			'selection': {xval: message.points[0].x, yval: message.points[0].y}
-		}, 'https://plot.ly');
+		coordinate_hover(graphs['theta'],message);
 	}
 
 	//Coordinate zoom
 	if(graph.id==='theta' && message.type==='zoom') {
-		graphs['theta2'].graphContentWindow.postMessage({
-			'task': 'relayout',
-			'update': {'xaxis': {'range': [message.ranges.x[0], message.ranges.x[1]]},
-						'yaxis': {'range': [message.ranges.y[0], message.ranges.y[1]]}}
-		}, 'https://plot.ly');
+		update_theta_zoom(graphs['theta2'],message);
 	}
 
 	//Coordinate zoom
 	if(graph.id==='theta2' && message.type==='zoom') {
-		graphs['theta'].graphContentWindow.postMessage({
-			'task': 'relayout',
-			'update': {'xaxis': {'range': [message.ranges.x[0], message.ranges.x[1]]},
-						'yaxis': {'range': [message.ranges.y[0], message.ranges.y[1]]}}
-		}, 'https://plot.ly');
+		update_theta_zoom(graphs['theta'],message);
 	}
 });
 
