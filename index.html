@@ -1,64 +1,32 @@
+<!-- https://github.com/plotly/postMessage-API/blob/master/hello_world.html#L52-L117 -->
+
 <html>
 
-<header>
-	<meta charset='UTF-8'>
-	<title>Biological Quantification</title>
-</header>
+<title>Plotly postMessage API</title>
+<head>
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/base-min.css">
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css">
+    <meta name="description" content="Interactively view x, y slices through my_graphs and contour plots online with Plotly.">
+</head>
 
-<body>
+<body style="font-family: 'Open Sans', serif; background: #edf1f8">
 
+	<div class="pure-g">
+		<div class="pure-u-7-24">
+			<div style="margin: 0 2em 0; text-align: left; margin-top: 100px;">
+				<h1 style="text-transform: uppercase; color: #447bdc;">
+				</h1>
+			</div>
+		</div>
+		
 
-<style>	
-
-</style>
-
-
-<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-
-<div id="myDiv" style="width:100%;height:100%"></div>
-
-<script>
-
-	var width = 960,
-		height = 700,
-		radius = (Math.min(width,height)/2) -10;
+	</div>
 
 	
-	Plotly.d3.csv('threshpoints.csv', function(err,rows){
-		function unpack(rows,key) {
-			return rows.map(function(row)
-				{return row[key]; });}
-
-		// console.log(rows)
-
-		var trace1 = {
-			x:unpack(rows,'x'), y:unpack(rows,'y'), z:unpack(rows,'z'),
-			mode: 'markers',
-			marker: {
-				size: 2,
-				// line: {
-				// 	color: 'rgba(217, 217, 217, 0.14)',
-				// 	width: 0.5},
-				opacity: 0.1},
-			type: 'scatter3d'
-		};
-
-		var data = [trace1];
-
-		var layout = {margin: {
-			l: 0,
-			r: 0,
-			b: 0,
-			t: 0
-		}};
-		Plotly.newPlot('myDiv',data,layout);
-
-	});
-
-
-</script>
-
 
 </body>
 
 </html>
+<!-- <iframe width="900" height="800" frameborder="0" scrolling="no" src="//plot.ly/~msschwartz21/90.embed"></iframe> -->
