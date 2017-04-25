@@ -24,28 +24,25 @@
 					Open your console and try a few things:<br>
 					1 - Click, hover, or zoom on points in the my_graph. You'll see the messages printed and you can add custom callbacks to these events.<br><br>
 					2 - Make new plots on the client with the postMessage API:
-<pre style="font-size: 0.75em;"><code>
-	graphs.my_graph.graphContentWindow.postMessage({
-		'task': 'newPlot',
-		'data': [
-		{
-			'x': [1,2,3],
-			'y': [10,20,30],
-			'type': 'scatter'
-		}],
-		'layout': {'title': 'new title'}
-	}, 'https://plot.ly')</code></pre>
 				</p>
 			</div>
 		</div>
 		
 		<div>
-			<iframe id = "my_graph"
+			<!-- <iframe id = "my_graph"
 					src = "https://plot.ly/~msschwartz21/90.embed"
-					style = "width:100%; height:600px; border:none"
+					width = "900" height = "800" frameboarder = "0"
 					seamless> 
-			</iframe>
+			</iframe> -->
 
+		</div>
+
+		<div>
+			<iframe id = "theta" width="900" height="800" frameborder="0" scrolling="no" src="//plot.ly/~msschwartz21/96.embed"></iframe>
+		</div>
+
+		<div>
+			<iframe id = "theta2" width="900" height="800" frameborder="0" scrolling="no" src="//plot.ly/~msschwartz21/96.embed"></iframe>
 		</div>
 
 	</div>
@@ -69,9 +66,13 @@ $('iframe').each(function(i, obj){
 	graphs[obj.id] = init_graph_obj(obj.id);
 });
 
+console.log(graphs)
+
 window.addEventListener('message', function(e){
 	var message = e.data;
 	var graph;
+
+	//Figure out which graph the message came from
 	for(var i in graphs) {
 		if(graphs[i].graphContentWindow === e.source) {
 			graph = graphs[i];
@@ -93,8 +94,42 @@ window.addEventListener('message', function(e){
 		}, 'https://plot.ly');
 	} else if (message.type==='hover' ||
 				message.type==='zoom' ||
-				mesage.type==='click') {
+				message.type==='click') {
 		console.log(id, '-->', message);
+	}
+
+	//Show hover tag for second graph if first activated
+	if(graph.id==='theta' && message.type==='hover') {
+		graphs['theta2'].graphContentWindow.postMessage({
+			'task': 'hover',
+			'selection': {xval: message.points[0].x, yval: message.points[0].y}
+		}, 'https://plot.ly');
+	}
+
+	//Show hover tag for first graph if second activated
+	if(graph.id==='theta2' && message.type==='hover') {
+		graphs['theta'].graphContentWindow.postMessage({
+			'task': 'hover',
+			'selection': {xval: message.points[0].x, yval: message.points[0].y}
+		}, 'https://plot.ly');
+	}
+
+	//Coordinate zoom
+	if(graph.id==='theta' && message.type==='zoom') {
+		graphs['theta2'].graphContentWindow.postMessage({
+			'task': 'relayout',
+			'update': {'xaxis': {'range': [message.ranges.x[0], message.ranges.x[1]]},
+						'yaxis': {'range': [message.ranges.y[0], message.ranges.y[1]]}}
+		}, 'https://plot.ly');
+	}
+
+	//Coordinate zoom
+	if(graph.id==='theta2' && message.type==='zoom') {
+		graphs['theta'].graphContentWindow.postMessage({
+			'task': 'relayout',
+			'update': {'xaxis': {'range': [message.ranges.x[0], message.ranges.x[1]]},
+						'yaxis': {'range': [message.ranges.y[0], message.ranges.y[1]]}}
+		}, 'https://plot.ly');
 	}
 });
 
