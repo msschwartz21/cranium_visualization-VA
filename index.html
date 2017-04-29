@@ -2,19 +2,21 @@
 <!DOCTYPE HTML>
 <html>
 
-<title>Plotly postMessage API</title>
+<title>Quantifying Biological Structures</title>
 <head>
     <script src="//code.jquery.com/jquery-1.10.2.js"></script>
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/base-min.css">
     <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css">
     <meta name="description" content="Interactively view x, y slices through my_graphs and contour plots online with Plotly.">
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
 </head>
 
 <body style="font-family: 'Open Sans', serif; background: #edf1f8">
+<div id="container">
 
-	<div class="pure-g">
-		<div class="pure-u-7-24">
+	<div>
+		<!-- <div class="pure-u-7-24">
 			<div style="margin: 0 2em 0; text-align: left; margin-top: 100px;">
 				<h1 style="text-transform: uppercase; color: #447bdc;">
 					Bind Custom Client-Side to Plotly Graphs
@@ -26,25 +28,38 @@
 					2 - Make new plots on the client with the postMessage API:
 				</p>
 			</div>
+		</div> -->
+
+		<div>
+			<h1>Quantifying Forebrain Development</h1>
+		</div>
+
+		<div class="section">
+			<div class="sectionhead">How do commissures form?</div>
 		</div>
 		
-		<div>
-			<!-- <iframe id = "my_graph"
+		<div class="section">
+			<div class="sectionhead">What does the raw data look like?</div>
+			<iframe id = "my_graph"
 					src = "https://plot.ly/~msschwartz21/90.embed"
 					width = "900" height = "800" frameboarder = "0"
 					seamless> 
-			</iframe> -->
+			</iframe>
 
 		</div>
 
-		<div>
-			<iframe id = "theta" width="900" height="800" frameborder="0" scrolling="no" src="//plot.ly/~msschwartz21/96.embed"></iframe>
-		</div>
+		<div class="section">
+			<div class="sectionhead">Where is signal around the commissure?</div>
 
-		<div>
-			<iframe id = "theta2" width="900" height="800" frameborder="0" scrolling="no" src="//plot.ly/~msschwartz21/96.embed"></iframe>
-		</div>
+			<div id='theta1'>
+				<iframe id = "theta" width="400" height="400" frameborder="0" scrolling="no" src="//plot.ly/~msschwartz21/96.embed"></iframe>
+			</div>
 
+			<div id='theta2'>
+				<iframe id = "theta2" width="400" height="400" frameborder="0" scrolling="no" src="//plot.ly/~msschwartz21/96.embed"></iframe>
+			</div>
+
+		</div>
 	</div>
 
 <script src='main.js'></script>
@@ -123,8 +138,7 @@ window.addEventListener('message', function(e){
 
 
 </script>
-
+</div>
 </body>
-
 </html>
-<!-- <iframe width="900" height="800" frameborder="0" scrolling="no" src="//plot.ly/~msschwartz21/90.embed"></iframe> -->
+<!-- <iframe width="900" height="800" frameborder="0" scrolling="no" src="//plot.ly/~msschwartz21/90.embed"></iframe>

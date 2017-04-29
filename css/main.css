@@ -1,0 +1,33 @@
+/*Center contents of the page in the widow*/
+#container {
+	max-width: 1000px;
+	margin: 0 auto;
+}
+
+body { 
+	text-align: center;
+	font-size: 1em;
+	background-color: #edf1f8;
+	font-family: 'Open Sans', serif;
+}
+
+h1 {
+	color: #447bdc;
+	text-transform: uppercase;
+	font-size: 3em;
+}
+
+.section {}
+
+.sectionhead {
+	color: #447bdc;
+	font-size: 2em;
+}
+
+/*Graph specific styling*/
+.t_graph {
+	float: left;
+}
+
+#theta1 {float: left;}
+#theta2 {float: left;}

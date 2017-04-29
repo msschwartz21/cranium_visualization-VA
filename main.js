@@ -19,3 +19,5 @@ function coordinate_hover(graph,message) {
 		'selection': {xval: message.points[0].x, yval: message.points[0].y}
 	}, 'https://plot.ly');
 }
+
+// https://plot.ly/python/hover-events/
