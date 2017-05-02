@@ -15,9 +15,14 @@ body {
 
 h1 {
 	color: #135CDB;
-	text-transform: uppercase;
+	/*text-transform: uppercase;*/
 	/*font-size: 3em;*/
 	/*#447bdc, #03256C*/
+}
+
+#s0 {
+	text-transform: uppercase;
+	font-size: 3em;
 }
 
 h3 {
@@ -41,37 +46,41 @@ p {
 	margin: 0 auto;
 }
 
-#nav {
-	position: fixed;
-	top: 300;
-	left: 0;
-	width: 200px;
-	height: 100px;
+ul {
+	list-style-type: none;
+	margin: 0px;
+	padding: 0px;
+	width: 125px;
 	background: #383F51;
-	/*#808D8E, #223843, #2F4858 */
-	text-align: center;
+	position: fixed;
+	left: 0;
 	overflow: auto;
+	text-align: left;
 }
 
-#navhead {
+li a {
+	display: block;
+	color: #ffffff;
+	text-decoration: none;
+	/*text-align: left;*/
+	padding: 2px 1px 1px 25px;
 	position: relative;
-	top: 10px;
-	left: 10px;
-	width: 180px;
-	background: #ffffff;
-	color: #383F51;
+	left: -45px;
+}
+
+li a:hover {
+	color: #B0CDFF;
+	/*background: #ffffff;*/
 	font-weight: bold;
 }
 
-#links {
-	clear: left;
-	position: relative;
-	top: 15px;
-	overflow: auto;
-}
-
-.navlink {
-	color: #ffffff;
+#navhead {
+	background: #ffffff;
+	color: #383F51;
+	font-weight: bold;
+	text-align: left;
+	width: 105px;
+	margin: 10px;
 }
 
 .section {
@@ -86,11 +95,13 @@ p {
 .box {
 	float: center;
 	display: inline-block;
-	width: 500px;
-	border: 2px solid green;
+	width: 550px;
+	/*border: 2px solid green;*/
 	margin: 20px auto;
 	padding: 20px auto;
 	overflow: auto;
+	overflow-x: auto;
+	vertical-align: top;
 }
 
 #imgbox {
@@ -100,6 +111,22 @@ p {
 	top: -450px;
 	width: 250px;
 	overflow-y: auto;
+}
+
+p.labels {
+	float: center;
+}
+
+span.at {
+	color: green;
+	/*float: center;*/
+	font-weight: bold;
+}
+
+span.gfap {
+	color: red;
+	/*float: center;*/
+	font-weight: bold;
 }
 
 

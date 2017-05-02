@@ -1,91 +1,189 @@
-<!-- https://github.com/plotly/postMessage-API/blob/master/hello_world.html#L52-L117 -->
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
 
-<title>Quantifying Biological Structures</title>
 <head>
-    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+	<title>Quantifying Forebrain Development</title>
+	<link rel="stylesheet" type="text/css" href="/css/main3.css">
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/base-min.css">
     <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css">
     <meta name="description" content="Interactively view x, y slices through my_graphs and contour plots online with Plotly.">
-    <link rel="stylesheet" type="text/css" href="/css/main.css">
 </head>
 
-<body style="font-family: 'Open Sans', serif; background: #edf1f8">
+<body>
 <div id="container">
+	
+	<h1 id="s0">Quantifying Forebrain Development</h1>
+	<!-- Navigation bar -->
+	<!-- https://www.w3schools.com/css/css_navbar.asp -->
+	<ul>
+		<li><a href="#s0" id="navhead">Navigation</a></li> 
+		<li><a href="#s1">Introduction</a></li>
+		<li><a href="#s2">Individual Variability</a></li>
+		<li><a href="#s3">Math Models</a></li>
+		<li><a href="#s4">Normal Embryos</a></li>
+		<li><a href="#s5">Mutant Embryos</a></li>
+		<li><a href="#s6">Detecting Differences</a></li>
+	</ul>
 
-	<div>
-		<!-- <div class="pure-u-7-24">
-			<div style="margin: 0 2em 0; text-align: left; margin-top: 100px;">
-				<h1 style="text-transform: uppercase; color: #447bdc;">
-					Bind Custom Client-Side to Plotly Graphs
-				</h1>
-
-				<p style="font-weight: 300; color: #1d3b84; opacity: 0.5">
-					Open your console and try a few things:<br>
-					1 - Click, hover, or zoom on points in the my_graph. You'll see the messages printed and you can add custom callbacks to these events.<br><br>
-					2 - Make new plots on the client with the postMessage API:
-				</p>
-			</div>
-		</div> -->
-
-		<div>
-			<h1>Quantifying Forebrain Development</h1>
+	<!-- Introduction section -->
+	<div class="section" id="s1">
+		<h1>Introduction</h1>
+		<div class="box">
+			<h2>What is a commissure?</h2>
+			<img src="/images/connectome.jpg">
+			<p class="labels">Representation of connections in the human brain</p>
 		</div>
-
-		<div class="section">
-			<div class="sectionhead">How do commissures form?</div>
+		<div class="box">
+			<h2>How can we study commissure formation?</h2>
+			<img src="/images/Larvae1.png">
+			<p class="labels">Transparent zebrafish embryo at 28 hours post fertilization</p>
 		</div>
+		<br>
+		<div class="box">
+			<h2>Maximum Intensity Projections</h2>
+			<img src="/images/Figure-26-Maximum-Intensity-projection-MIP-This-diagram-shows-an-overview-of-how.jpg">
+		</div>
+		<div class="box">
+			<h2>The Post Optic Commissure</h2>
+			<img src="/images/wt.jpg">
+			<br>
+			<p class="labels"><span class="at">Axons</span>  <span class="gfap">Glial Cells</span></p>
+		</div>
+		<!-- https://www.researchgate.net/figure/235661995_fig4_Figure-26-Maximum-Intensity-projection-MIP-This-diagram-shows-an-overview-of-how -->
+	</div>
+
+	<!-- Individual variation -->
+	<div class="section" id="s2">
+		<h1>How can we quantify differences while accounting for biological variation?</h1>
+		<h2>Variablity among normal embryos</h2>
+		<img src="/images/wt_variability.jpg" width ="90%">
+		<p class="labels"><span class="at">Axons</span>  <span class="gfap">Glial Cells</span></p>
 		
-		<div class="section">
-			<div class="sectionhead">What does the raw data look like?</div>
-			<iframe id = "my_graph"
-					src = "https://plot.ly/~msschwartz21/90.embed"
-					width = "900" height = "800" frameboarder = "0"
-					seamless> 
-			</iframe>
+	</div>
 
+	<div class="section" id="s3">
+		<h1>Describing biological structure with mathematical models</h1>
+		<iframe id="wt3d" width="1000" height="600" frameborder="0" scrolling="no" src="//plot.ly/~msschwartz21/126.embed"></iframe>
+		<!-- <p>3d scatter with buttons to turn planes on/off</p> -->
+	</div>
+
+	<div class="section" id="s4">
+		<h1>Comparing a set of normal embryos</h1>
+		<div class="box">
+			<h2>Position of <span class="at">axons</span></h2>
+			<iframe id="wtat" width="550" height="400" frameborder="0" scrolling="no" src="//plot.ly/~msschwartz21/116.embed"></iframe>
+			<p class="labels">Average of 17 normal embryos</p>
 		</div>
-
-		<div class="section">
-			<div class="sectionhead">Where is signal around the commissure?</div>
-
-			<div id='theta1'>
-				<iframe id = "theta" width="400" height="400" frameborder="0" scrolling="no" src="//plot.ly/~msschwartz21/96.embed"></iframe>
-			</div>
-
-			<div id='theta2'>
-				<iframe id = "theta2" width="400" height="400" frameborder="0" scrolling="no" src="//plot.ly/~msschwartz21/96.embed"></iframe>
-			</div>
-
+		<div class="box">
+			<h2>Position of supportive <span class="gfap">glial cells</span></h2>
+			<iframe id="wtzrf" width="550" height="400" frameborder="0" scrolling="no" src="//plot.ly/~msschwartz21/118.embed" seamless></iframe>
+			<p class="labels">Average of 17 normal embryos</p>
 		</div>
 	</div>
 
+	<div class="section" id="s5">
+		<h1>Failure to form the Post Optic Commissure</h1>
+		<div class="box">
+			<h2>Mutant Embryo</h2>
+			<img src="/images/yot.jpg">
+			
+		</div>
+		<div class="box">
+			<h2>3D Model</h2>
+			<iframe id="yot3d" width="500" height="400" frameborder="0" scrolling="no" src="//plot.ly/~msschwartz21/128.embed"></iframe>
+		</div>
+		<p class="labels">Representative <span style="font-style: italic;">You-too</span> embryo with mutation in the Gli2d transcription factor</p>
+	</div>
+
+	<div class="section" id="s6">
+		<h1>Can we detect differences in normal and mutant embryos?</h1>
+		<div class="box">
+			<h2>Normal <span class="at">Axons</span></h2>
+			<!-- <p>wt at theta heatmap</p> -->
+			<iframe id="wtat2" width="550" height="400" frameborder="0" scrolling="no" src="//plot.ly/~msschwartz21/116.embed"></iframe>
+			<p class="labels">Average of 17 normal embryos</p>
+		</div>
+		<div class="box">
+			<h2>Normal <span class="gfap">Glial Cells</span></h2>
+			<!-- <p>wt gfap theta heatmap</p> -->
+			<iframe id="wtzrf2" width="550" height="400" frameborder="0" scrolling="no" src="//plot.ly/~msschwartz21/118.embed"></iframe>
+			<p class="labels">Average of 17 normal embryos</p>
+		</div>
+		<div class="box">
+			<h2>Mutant <span class="at">Axons</span></h2>
+			<!-- <p>yot at theta heatmap</p> -->
+			<iframe id="yotat" width="550" height="400" frameborder="0" scrolling="no" src="//plot.ly/~msschwartz21/122.embed"></iframe>
+			<p class="labels">Average of 12 mutant embryos</p>
+		</div>
+		<div class="box">
+			<h2>Mutant <span class="gfap">Glial Cells</span></h2>
+			<!-- <p>yot gfap theta heatmap</p> -->
+			<iframe id="yotzrf" width="550" height="400" frameborder="0" scrolling="no" src="//plot.ly/~msschwartz21/120.embed"></iframe>
+			<p class="labels">Average of 12 mutant embryos</p>
+		</div>
+	</div>
+
+	<div>
+		
+	</div>
+
+	<footer>&copy; Copyright 2017 Morgan Schwartz</footer>
+	
+</div>
+<script src="https://d3js.org/d3.v3.min.js"></script>
 <script src='main.js'></script>
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>
 
-<script type="text/javascript" charset="utf-8">
+<script type="text/javascript">
 
-function init_graph_obj(id){
-	var obj = {
-		graphContentWindow: $('#'+id)[0].contentWindow,
-		id:id
-	};
-	obj.pinger = setInterval(function(){
-		obj.graphContentWindow.postMessage({task: 'ping'}, '*'); //'https://plot.ly'
-	}, 500);
-	return obj;
-}
-
+//Record graphs and set up event listeners
 var graphs = {};
-
 $('iframe').each(function(i, obj){
 	graphs[obj.id] = init_graph_obj(obj.id);
 });
+console.log(graphs);
 
-console.log(graphs)
+//Define graphs that are paired
+var pairs = {
+	'wtat': ['wtzrf'],
+	'wtzrf': ['wtat'],
+	'wtat2': ['wtzrf2','yotat','yotzrf'],
+	'wtzrf2': ['wtat2','yotat','yotzrf'],
+	'yotat': ['yotzrf','wtat2','wtzrf2'],
+	'yotzrf': ['yotat','wtat2','wtzrf2']
+};
 
-window.addEventListener('message', function(e){
+var threed = ['wt3d','yot3d'];
+
+window.addEventListener('message', function(e) {
+	var message = e.data;
+	var graph;
+
+	for(var i in graphs) {
+		if(graphs[i].graphContentWindow === e.source) {
+			graph = graphs[i];
+		}
+	}
+
+	var pinger = graph.pinger;
+	var graphContentWindow = graph.graphContentWindow;
+	var id = graph.id;
+
+	if('pong' in message && message.pong) {
+		clearInterval(pinger);
+		graphContentWindow.postMessage({
+			'task': 'listen',
+			'events': ['click', 'hover', 'zoom']
+		}, 'https://plot.ly');
+	} else if (message.type==='hover' ||
+				message.type==='zoom' ||
+				message.type==='click') {
+		console.log(id, '-->', message);
+	}
+});
+
+/*window.addEventListener('message', function(e){
 	var message = e.data;
 	var graph;
 
@@ -112,38 +210,30 @@ window.addEventListener('message', function(e){
 	} else if (message.type==='hover' ||
 				message.type==='zoom' ||
 				message.type==='click') {
-		console.log(id, '-->', message);
+		// console.log(id, '-->', message);
 	}
 
-	//Show hover tag for second graph if first activated
-	if(graph.id==='theta' && message.type==='hover') {
-		coordinate_hover(graphs['theta2'],message);
-	}
+	// //Show hover tag for second graph if first activated
+	// if(graph.id in pairs && message.type==='hover') {
+	// 	coordinate_hover(graphs[pairs[graph.id]],message);
+	// }
 
-	//Show hover tag for first graph if second activated
-	if(graph.id==='theta2' && message.type==='hover') {
-		coordinate_hover(graphs['theta'],message);
-	}
+	// //Coordinate zoom
+	// if(graph.id in pairs && message.type==='zoom') {
+	// 	update_theta_zoom(graphs[pairs[graph.id]],message);
+	// }
 
-	//Coordinate zoom
-	if(graph.id==='theta' && message.type==='zoom') {
-		update_theta_zoom(graphs['theta2'],message);
-	}
+	// //Change opacity when zooming in 3d
+	// if(graph.id in threed) {
+	// 	update_opacity(graphs[graph.id],message);
+	// }
 
-	//Coordinate zoom
-	if(graph.id==='theta2' && message.type==='zoom') {
-		update_theta_zoom(graphs['theta'],message);
-	}
-
-	//Change image on click
-	if(message.id==='click') {
-		
-	}
-});
-
+	// //Change image on click
+	// if(message.type==='click') {
+	// 	show_image(wtatdata,message);
+	// }
+});*/
 
 </script>
-</div>
 </body>
 </html>
-<!-- <iframe width="900" height="800" frameborder="0" scrolling="no" src="//plot.ly/~msschwartz21/90.embed"></iframe>

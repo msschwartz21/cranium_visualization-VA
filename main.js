@@ -23,11 +23,21 @@ function update_theta_zoom(graph,message) {
 	}, 'https://plot.ly');
 }
 
-function coordinate_hover(graph,message) {
-	graph.graphContentWindow.postMessage({
-		'task': 'hover',
-		'selection': {xval: message.points[0].x, yval: message.points[0].y}
-	}, 'https://plot.ly');
+function coordinate_hover(graphs,message) {
+	for(var graph in graphs) {
+		graph.graphContentWindow.postMessage({
+			'task': 'hover',
+			'selection': {xval: message.points[0].x, yval: message.points[0].y}
+		}, 'https://plot.ly');
+	}
+}
+
+function update_opacity(graph,message) {
+	var x = abs(message.ranges.xscene[0] - message.ranges.xscene[1]),
+		y = abs(message.ranges.yscene[0] - message.ranges.yscene[1]),
+		z = abs(message.ranges.zscene[0] - message.ranges.zscene[1]),
+		cube = x * y * z;
+	console.log(cube);
 }
 
 // https://plot.ly/python/hover-events/
