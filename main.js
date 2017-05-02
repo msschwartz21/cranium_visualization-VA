@@ -1,3 +1,13 @@
+function init_graph_obj(id){
+	var obj = {
+		graphContentWindow: $('#'+id)[0].contentWindow,
+		id:id
+	};
+	obj.pinger = setInterval(function(){
+		obj.graphContentWindow.postMessage({task: 'ping'}, '*'); //'https://plot.ly'
+	}, 500);
+	return obj;
+}
 
 function update_theta_zoom(graph,message) {
 	graph.graphContentWindow.postMessage({
@@ -21,3 +31,12 @@ function coordinate_hover(graph,message) {
 }
 
 // https://plot.ly/python/hover-events/
+
+function show_image(data,message) {
+	var x = Math.round(message.points[0].x * 10)/10,
+		y = Math.round(message.points[0].y * 10)/10;
+	console.log(x,y);
+	var name = x.toString() + '_' + y.toString();
+	console.log(name);
+	console.log(data[name]);
+}
